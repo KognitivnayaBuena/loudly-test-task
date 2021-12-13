@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import { Song } from "../../core/song";
+import { Song } from "../../services/core/song";
 
 type SongsListProps = {
   songs: Song[];

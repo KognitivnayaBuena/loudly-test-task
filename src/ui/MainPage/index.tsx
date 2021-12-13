@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import { SongsList } from "../../components/SongsList";
 
-import { Song } from "../../core/song";
+import { Song } from "../../services/core/song";
 
 const mockSongsList: Song[] = [
   {
