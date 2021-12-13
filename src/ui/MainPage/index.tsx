@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { SongsList } from "../../components/SongsList";
 
-import { Song } from "../../services/core/song";
+import { Song } from "../../core/song";
 import { useSongsStorage } from "../../services/store/songsUdapter";
 
 const mockSongsList: Song[] = [
