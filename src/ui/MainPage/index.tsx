@@ -1,8 +1,9 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 import { SongsList } from "../../components/SongsList";
 
 import { Song } from "../../services/core/song";
+import { useSongsStorage } from "../../services/store/songsUdapter";
 
 const mockSongsList: Song[] = [
   {
@@ -36,6 +37,10 @@ const mockSongsList: Song[] = [
 ];
 
 export const MainPage: FC = () => {
+  const { songs } = useSongsStorage();
+
+  console.log("songs", songs);
+
   return (
     <main>
       <h1> Songs List </h1>

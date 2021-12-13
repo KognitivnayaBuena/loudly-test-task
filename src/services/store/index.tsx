@@ -18,14 +18,12 @@ const StoreContext = React.createContext<StoreType>({ songs: [initialSong] });
 export const useStore = () => useContext(StoreContext);
 
 export const Provider: React.FC = ({ children }) => {
-  const [songs, setSongs] = useState<{ songs: Song[] }>({
-    songs: [initialSong],
-  });
+  const [songs, setSongs] = useState<Song[]>([initialSong]);
 
   const value = {
     songs,
     updateSongs: setSongs,
-    emptySongs: () => setSongs({ songs: [initialSong] }),
+    emptySongs: () => setSongs([initialSong]),
   };
 
   return (

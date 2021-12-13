@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 
 import { Song } from "../../services/core/song";
+import { SongCard } from "../SongCard";
 
 type SongsListProps = {
   songs: Song[];
@@ -10,7 +11,7 @@ export const SongsList: FC<SongsListProps> = ({ songs }) => {
   return (
     <ul>
       {songs.map((song) => (
-        <li key={song.id}>{song.name}</li>
+        <SongCard key={song.id} />
       ))}
     </ul>
   );
