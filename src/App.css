@@ -2,7 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* background-color: #6a8eae; */
+  color: #6a8eae;
 }
+// #6a8eae
+// #9bd1e5
+// #D1FAFF
+// #57A773
+// #157145
 
 .App-logo {
   height: 40vmin;
@@ -39,6 +46,10 @@
   }
 }
 
+h3 {
+  margin: 0;
+}
+
 button {
   font-size: calc(10px + 2vmin);
 }
@@ -47,4 +58,16 @@ ul {
   margin: 0;
   padding: 0;
   text-align: left;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }

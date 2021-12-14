@@ -34,7 +34,8 @@ const likeSongById = async (songData: FormData) => {
   });
 
   if (response.ok) {
-    return "Success";
+    const songs: Song[] = await response.json();
+    return songs;
   } else {
     throw new Error("Something went wrong");
   }

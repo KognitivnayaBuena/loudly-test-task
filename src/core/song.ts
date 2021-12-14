@@ -3,8 +3,8 @@ export type SongId = string;
 export type Song = {
   id: SongId;
   name: string;
-  description: string;
-  artist_name: string;
+  music_file_path: string;
+  music_file_mimetype: string;
   cover_image_path: string;
-  liked: number;
+  likes: number;
 };
