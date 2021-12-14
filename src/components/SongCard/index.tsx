@@ -13,8 +13,10 @@ type Status = "start" | "loading" | "success" | "error";
 export const SongCard: FC<SongCardProps> = ({ song }) => {
   const [liked, setLiked] = useState(false);
   const [status, setStatus] = useState<Status>("start");
+
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const pauseOthers = usePauseAll();
+
   const likeButtonDisabled = status === "loading" || status === "success";
 
   const likeSongHandler = () => {
