@@ -1,7 +1,7 @@
-import { FC } from "react";
+import { FC, RefObject, useRef } from "react";
 
 import { Song } from "../../core/song";
-import { SongCard } from "../SongCard";
+import { MemoizedSongCard } from "../SongCard";
 
 import styles from "./SongList.module.css";
 
@@ -13,7 +13,7 @@ export const SongsList: FC<SongsListProps> = ({ songs }) => {
   return (
     <ul className={styles.list}>
       {songs.map((song) => (
-        <SongCard key={song.id} song={song} />
+        <MemoizedSongCard key={song.id} song={song} />
       ))}
     </ul>
   );

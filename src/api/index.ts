@@ -6,8 +6,6 @@ const API_KEY = "apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8";
 const fetchSongsList = async () => {
   const response = await fetch(`${BASE_URL}/song/trending`);
 
-  // return response;
-
   if (response.ok) {
     const songs: Song[] = await response.json();
     return songs;
@@ -16,21 +14,18 @@ const fetchSongsList = async () => {
   }
 };
 
-const likeSongById = async (songData: FormData) => {
-  const url = `${BASE_URL}/interact/like/${API_KEY}`;
-  // url.search = new URLSearchParams(TOKEN).toString();
+const likeSongById = async (id: string) => {
+  const url = `${BASE_URL}/interact/like?${API_KEY}`;
 
-  // const songData = new FormData();
-  // songData.append("id", songId);
-
-  console.log("songData", songData);
+  const data = new URLSearchParams();
+  data.append("id", id);
 
   const response = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: songData,
+    body: data,
   });
 
   if (response.ok) {

@@ -23,9 +23,12 @@
   grid-area: audio;
 }
 
+.audio::-webkit-media-controls-panel {
+  background-color: #9bd1e5;
+}
+
 .likeButton {
   grid-area: likeButton;
-  border-radius: 5px;
   background-color: #d1faff;
 }
 

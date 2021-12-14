@@ -7,23 +7,21 @@ import { SongsList } from "../../components/SongsList";
 import { Song } from "../../core/song";
 
 export const MainPage: FC = () => {
-  // const { songs } = useSongsStorage();
-
-  // console.log("songs", songs);
-
   const { isLoading, error, data } = useQuery(
     "get songs list",
     api.fetchSongsList
   );
 
-  // const songs: Song[] = JSON.parse(data);
-  console.log("data", data);
+  if (isLoading) return <p>"Loading..."</p>;
+
+  if (error) return <p>"An error has occurred: " + error</p>;
+
+  const isShowSongsList = data && data.length > 0 && !isLoading;
 
   return (
     <main>
-      <h1> Songs List </h1>
-      {isLoading && "isLoading..."}
-      {data?.length > 0 && !isLoading && <SongsList songs={data} />}
+      <h1>Songs</h1>
+      {isShowSongsList && <SongsList songs={data} />}
     </main>
   );
 };
