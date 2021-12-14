@@ -8,12 +8,14 @@ const fetchSongsList = async () => {
     headers: { Authorization: TOKEN },
   });
 
-  if (response.ok) {
-    const songs: Song[] = await response.json();
-    return songs;
-  } else {
-    throw new Error("Something went wrong");
-  }
+  return response;
+
+  // if (response.ok) {
+  //   const songs: Song[] = await response.json();
+  //   return songs;
+  // } else {
+  //   throw new Error("Something went wrong");
+  // }
 };
 
 const likeSongById = async (songId: SongId) => {
