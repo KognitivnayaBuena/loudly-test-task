@@ -1,5 +1,4 @@
-import React, { FC, useState, useEffect, memo, useRef } from "react";
-import { useQuery } from "react-query";
+import React, { FC, useState, memo, useRef } from "react";
 import { api } from "../../api";
 import { Song } from "../../core/song";
 import { usePauseAll } from "../../hooks/usePauseAll";
@@ -9,50 +8,34 @@ type SongCardProps = {
   song: Song;
 };
 
-type Status = "loading" | "success" | "error";
+type Status = "start" | "loading" | "success" | "error";
 
 export const SongCard: FC<SongCardProps> = ({ song }) => {
   const [liked, setLiked] = useState(false);
-  const [status, setStatus] = useState<Status>("success");
+  const [status, setStatus] = useState<Status>("start");
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const pauseOthers = usePauseAll();
-
-  // const { isLoading, error, data, refetch } = useQuery(
-  //   "repoData",
-  //   () => {
-  //     api.likeSongById(song.id);
-  //   },
-  //   {
-  //     manual: true,
-  //   }
-  // );
-
-  useEffect(() => {
-    if (error) {
-      setLiked(false);
-    }
-
-    if (data) {
-      setLiked(true);
-    }
-
-    if (isLoading) {
-      setLiked(true);
-    }
-  }, [status]);
+  const likeButtonDisabled = status === "loading" || status === "success";
 
   const likeSongHandler = () => {
-    api.likeSongById(song.id).then(() => {});
-    // refetch();
+    setStatus("loading");
+    setLiked(true);
+
+    api
+      .likeSongById(song.id)
+      .then(() => {
+        setStatus("success");
+        setLiked(true);
+      })
+      .catch(() => {
+        setStatus("error");
+        setLiked(false);
+      });
   };
 
   const onStartHandler = (event: React.SyntheticEvent<HTMLAudioElement>) => {
     pauseOthers(event.currentTarget);
   };
-
-  // if (isLoading) return <p>"Loading..."</p>;
-
-  // if (error) return <p>"An error has occurred: " + error</p>;
 
   return (
     <li className={styles.item} tabIndex={0}>
@@ -61,7 +44,7 @@ export const SongCard: FC<SongCardProps> = ({ song }) => {
       <span className={styles.likes}>Liked: {song.likes + Number(liked)}</span>
       <button
         className={styles.likeButton}
-        disabled={isLoading}
+        disabled={likeButtonDisabled}
         onClick={() => likeSongHandler()}>
         Like
       </button>

@@ -40,6 +40,12 @@
   box-shadow: 0 0 0 2px #6a8eae;
 }
 
+.likeButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+  background-color: #d1faff;
+}
+
 .likes {
   grid-area: likes;
 }
