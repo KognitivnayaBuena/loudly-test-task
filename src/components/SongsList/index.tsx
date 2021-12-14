@@ -1,7 +1,9 @@
-import React, { FC } from "react";
+import { FC } from "react";
 
 import { Song } from "../../core/song";
 import { SongCard } from "../SongCard";
+
+import styles from "./SongList.module.css";
 
 type SongsListProps = {
   songs: Song[];
@@ -9,9 +11,9 @@ type SongsListProps = {
 
 export const SongsList: FC<SongsListProps> = ({ songs }) => {
   return (
-    <ul>
+    <ul className={styles.list}>
       {songs.map((song) => (
-        <SongCard key={song.id} />
+        <SongCard key={song.id} song={song} />
       ))}
     </ul>
   );

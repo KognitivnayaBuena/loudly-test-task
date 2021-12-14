@@ -1,32 +1,36 @@
 import { Song, SongId } from "../core/song";
 
 const BASE_URL = "https://api-stg.jam-community.com";
-const TOKEN = "___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8";
+const API_KEY = "apikey=___agAFTxkmMIWsmN9zOpM_6l2SkZPPy21LGRlxhYD8";
 
 const fetchSongsList = async () => {
-  const response = await fetch(`${BASE_URL}/song/trending`, {
-    headers: { Authorization: TOKEN },
-  });
+  const response = await fetch(`${BASE_URL}/song/trending`);
 
-  return response;
+  // return response;
 
-  // if (response.ok) {
-  //   const songs: Song[] = await response.json();
-  //   return songs;
-  // } else {
-  //   throw new Error("Something went wrong");
-  // }
+  if (response.ok) {
+    const songs: Song[] = await response.json();
+    return songs;
+  } else {
+    throw new Error("Something went wrong");
+  }
 };
 
-const likeSongById = async (songId: SongId) => {
-  const response = await fetch(`${BASE_URL}/interact/like`, {
+const likeSongById = async (songData: FormData) => {
+  const url = `${BASE_URL}/interact/like/${API_KEY}`;
+  // url.search = new URLSearchParams(TOKEN).toString();
+
+  // const songData = new FormData();
+  // songData.append("id", songId);
+
+  console.log("songData", songData);
+
+  const response = await fetch(url, {
     method: "POST",
     headers: {
-      Authorization: TOKEN,
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: JSON.stringify({
-      id: songId,
-    }),
+    body: songData,
   });
 
   if (response.ok) {

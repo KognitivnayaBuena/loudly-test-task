@@ -13,17 +13,17 @@ export const MainPage: FC = () => {
 
   const { isLoading, error, data } = useQuery(
     "get songs list",
-    api.fetchSongsList.then((res: Song[]) => res.json())
+    api.fetchSongsList
   );
 
-  const songs: Song[] = data;
-  console.log("data", songs);
+  // const songs: Song[] = JSON.parse(data);
+  console.log("data", data);
 
   return (
     <main>
       <h1> Songs List </h1>
       {isLoading && "isLoading..."}
-      {songs?.length > 0 && !isLoading && <SongsList songs={songs} />}
+      {data?.length > 0 && !isLoading && <SongsList songs={data} />}
     </main>
   );
 };

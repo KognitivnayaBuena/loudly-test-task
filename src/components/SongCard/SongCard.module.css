@@ -1,3 +1,33 @@
 .item {
-  background: red;
+  display: grid;
+  grid-template-columns: 100px 1fr 100px;
+  grid-column-gap: 15px;
+  grid-template-areas: "cover name" "cover artistName" "cover description";
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.item:hover {
+  /* transform: translateY(10px); */
+}
+
+.cover {
+  width: 100px;
+  height: 100px;
+  grid-area: cover;
+}
+
+.songName {
+  grid-area: name;
+}
+
+.artistName {
+  grid-area: artistName;
+}
+
+.description {
+  grid-area: description;
 }
