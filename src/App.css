@@ -2,14 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: #6a8eae; */
   color: #6a8eae;
 }
-// #6a8eae
-// #9bd1e5
-// #D1FAFF
-// #57A773
-// #157145
 
 .App-logo {
   height: 40vmin;

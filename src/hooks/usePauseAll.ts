@@ -1,5 +1,3 @@
-import { MutableRefObject } from "react";
-
 export const usePauseAll = () => {
   return function pauseAll(target: HTMLAudioElement) {
     const audios = Array.from(document.querySelectorAll("audio")).filter(
