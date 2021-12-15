@@ -3,8 +3,8 @@
 # Instructions
 
 ## To run the project dev
-
-### `npm run dev`
+1) `npm install`
+2) `npm run dev`
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
